@@ -1,75 +1,48 @@
-.logincontainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    background-color: #f5f5f5;
-  }
-  
-.loginbox {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-  }
-  
-.title {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-.inputgroup {
-    margin-bottom: 15px;
-  }
-  
-.inputgroup label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-.inputgroup input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-.button-group {
-    display: flex;
-    justify-content: space-between;
-  }
+.container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 50px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
 
-.button-group button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-  }
-  
-.button-group button[type="button"] {
-    background-color: #6c757d;
-  }
-  
-.sns-login {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-.sns-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-.sns-button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #ddd;
-    border: none;
-    cursor: pointer;
-  }
+.inputField {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.snsTitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.snsIcons {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.icon {
+  height: 20px;
+  width: 20px;
+  background-color: gray;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}

@@ -1,42 +1,69 @@
-// import React from "react";
-// import styles from "../styles/LoginPage.module.css";
-// import Header2 from "../layout/Header2";
+import React, { useState } from 'react';
+import styles from '../styles/LoginPage.module.css';
+import { Link } from 'react-router-dom';
+import Header2 from '../layout/Header2';
 
-// const LoginPage = () => {
-    
-//     return (
-//         <div>
-//             <Header2/>
-//             <div className={styles.login-container}>
-//                 <div className={styles.login-box}>
-//                     <h1 className={styles.title}>로그인</h1>
-//                     <form>
-//                         <div className={styles.input-group}>
-//                             <label htmlFor="username">아이디</label>
-//                             <input type="text" id="username" name="username" />
-//                         </div>
-//                             <div className={styles.input-group}>
-//                             <label htmlFor="password">비밀번호</label>
-//                             <input type="password" id="password" name="password" />
-//                         </div>
-//                             <div className={styles.button-group}>
-//                             <button type="submit">로그인</button>
-//                             <button type="button">회원가입</button>
-//                         </div>
-//                     </form>
-//                     <div className={styles.sns-login}>
-//                         <p>SNS 로그인</p>
-//                         <div className={styles.sns-button}>
-//                             <button className={styles.sns-button}></button>
-//                             <button className={styles.sns-button}></button>
-//                             <button className={styles.sns-button}></button>
-//                             <button className={styles.sns-button}></button>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
+function LoginPage() {
+  const [formData, setFormData] = useState({
+    id: '',
+    password: ''
+  });
 
-// export default LoginPage;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Login Data:', formData);
+    // Handle the form submission logic here
+  };
+
+  return (
+    <div>
+        <div>
+            <Header2/>
+        </div>
+        <div className={styles.container}>
+        <form onSubmit={handleSubmit}>
+            <input 
+            type="text" 
+            name="id" 
+            value={formData.id} 
+            onChange={handleChange} 
+            placeholder="아이디" 
+            className={styles.inputField} 
+            />
+            <input 
+            type="password" 
+            name="password" 
+            value={formData.password} 
+            onChange={handleChange} 
+            placeholder="비밀번호" 
+            className={styles.inputField} 
+            />
+            <div className={styles.buttonGroup}>
+                <Link to='/LoginPage'>
+                    <button type="submit" className={styles.button}>로그인</button>
+                </Link>
+                <Link to='/SignupPage'>
+                    <button type="button" className={styles.button}>회원가입</button>
+                </Link>
+            </div>
+        </form>
+        <div className={styles.snsTitle}>SNS 로그인</div>
+        <div className={styles.snsIcons}>
+            <div className={styles.icon}></div>
+            <div className={styles.icon}></div>
+            <div className={styles.icon}></div>
+        </div>
+        </div>
+    </div>
+  );
+}
+
+export default LoginPage;
