@@ -1,26 +1,24 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
+import logo from './logo.svg';
+import './App.css';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from "./layout/Header";
-import JoinForm from "./page/JoinForm";
-import LoginForm from "./page/LoginForm";
-// import MatchingForm from "./page/MatchingForm";
-// import CommunityForm from "./page/CommunityFrom";
+import Header from './layout/Header2';
+import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
+import SignupPage from './pages/SignupPage';
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Header />
-            <Routes>
-				<Route path="/" element={<JoinForm />}></Route>
-				<Route path="/JoinForm" element={<JoinForm />}></Route>
-				<Route path="/LoginForm" element={<LoginForm />}></Route>
-                {/* <Route path="/MatchingForm" element={<MatchingForm />}></Route>
-                <Route path="/CommunityForm" element={<CommunityForm />}></Route> */}
-			</Routes>
-        </BrowserRouter>
-    )
-
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/LoginPage" element={<LoginPage />}></Route>
+        <Route path="/SignupPage" element={<SignupPage />}></Route>
+        {/* <Route path="/Prompt" element={<Prompt />}></Route>
+        <Route path="/History" element={<History />}></Route> */}
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
