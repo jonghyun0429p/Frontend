@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Header2 = () => {
   return (
     <header className={styles.header}>
-      <Link to='/MainPage'>
+      <Link to='/'>
         <div className={styles.logo}>로고위치</div>
         <div className={styles.headerButtons}></div>        
       </Link>

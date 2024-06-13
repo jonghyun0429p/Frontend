@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/LoginPage.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header2 from '../layout/Header2';
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ function LoginPage() {
     id: '',
     password: ''
   });
+  const navigation = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,6 +27,7 @@ function LoginPage() {
 
       }).then((res) => {
           alert(res.data)
+          navigation('/MainPage')
           })      
   };
 
@@ -53,7 +55,7 @@ function LoginPage() {
             className={styles.inputField} 
             />
             <div className={styles.buttonGroup}>
-                <Link to='/LoginPage'>
+                <Link to='/MainPage'>
                     <button type="submit" className={styles.button}>로그인</button>
                 </Link>
                 <Link to='/SignupPage'>

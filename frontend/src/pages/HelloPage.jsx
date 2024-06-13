@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 
 function HelloPage() {
   return (
-    <div className={styles.HelloPage}>
+    <div className={styles.mainPage}>
       <Header />
-      <div className={styles.HelloContent}>
-        <p className={styles.HelloText}>
+      <div className={styles.mainContent}>
+        <p className={styles.mainText}>
           선택하기 어려운 점심,<br />
           누군가가 결정해주면 좋을 것 같다는 생각 안해보셨나요?<br /><br />
           ****가 해드립니다.

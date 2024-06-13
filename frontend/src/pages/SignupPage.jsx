@@ -26,6 +26,7 @@ function SignupPage() {
       {
         id : e.id,
         password : e.password,
+        name : e.name,
         email : e.email,
         age : e.age,
         gender : e.gender
@@ -50,6 +51,10 @@ function SignupPage() {
         <label className={styles.label}>
             비밀번호 확인
             <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} className={styles.input} />
+        </label>
+        <label className={styles.label}>
+            이름
+            <input type="text" name="name" value={formData.id} onChange={handleChange} className={styles.input} />
         </label>
         <label className={styles.label}>
             이메일
