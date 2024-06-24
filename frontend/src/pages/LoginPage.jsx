@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/LoginPage.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import Header2 from '../layout/Header2';
+import Header1 from '../layout/Header1';
 import axios from 'axios';
 
 function LoginPage() {
@@ -20,13 +20,14 @@ function LoginPage() {
   };
 
   const handleSubmit = (data) => {
+      data.preventDefault();
       axios.post("/user/login",
       {
-          id: data.id,
-          password: data.password
+          id: formData.id,
+          password: formData.password
 
       }).then((res) => {
-          alert(res.data)
+          alert(JSON.stringify(res.data))
           navigation('/MainPage')
           })      
   };
@@ -34,7 +35,7 @@ function LoginPage() {
   return (
     <div>
         <div>
-            <Header2/>
+            <Header1/>
         </div>
         <div className={styles.container}>
         <form onSubmit={handleSubmit}>

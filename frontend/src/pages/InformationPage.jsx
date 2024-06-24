@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import styles from '../styles/Signup.module.css'; // Import the CSS module
-import Header1 from '../layout/Header1';
+import React, { useState, useEffect } from 'react';
+import styles from '../styles/InformationPage.module.css'; // Import the CSS module
+import Header2 from '../layout/Header2';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-function SignupPage() {
+function InformationPage() {
   const [formData, setFormData] = useState({
-    id: '',
+    email: '',
     mainPassword: '',
     confirmPassword: '',
-    email: '',
+    address: '',
     age: '',
-    gender : ','
+    gender : '',
   });
-  const navigation = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,29 +22,48 @@ function SignupPage() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post("/user/signup",
+    axios.post("/user/Information",
       {
-        id : e.id,
-        password : e.password,
-        name : e.name,
-        email : e.email,
-        age : e.age,
-        gender : e.gender
+        email : formData.email,
+        password : formData.password,
+        name : formData.name,
+        age : formData.age,
+        address : formData.address,
+        gender : formData.gender
       }
     ).then((res) => {
         alert(res.data);
-        navigation('/LoginPage');
     })
   };
 
+  useEffect(() => {
+    axios.get('user/Information',{
+      params : {
+        email:formData.email
+      }
+    })
+      .then(response => {
+        setFormData({
+          email: response.data.email,
+          mainPassword: response.data.password,
+          confirmPassword: response.data.password,
+          address: response.data.address,
+          age: response.data.age,
+          gender: response.data.gender,
+        });
+      })
+      .catch (error => {
+          console.error('Error sending message:', error);
+        })
+  }, []);
+
   return (
     <div>
-        <Header1/>
+        <Header2/>
         <form onSubmit={handleSubmit} className={styles.formContainer}>
         <label className={styles.label}>
-            아이디
-            <input type="text" name="id" value={formData.id} onChange={handleChange} className={styles.input} />
+            이메일
+            <input type="email" name="email" value={formData.email} onChange={handleChange} className={styles.input} />
         </label>
         <label className={styles.label}>
             비밀번호
@@ -61,10 +78,6 @@ function SignupPage() {
             <input type="text" name="name" value={formData.id} onChange={handleChange} className={styles.input} />
         </label>
         <label className={styles.label}>
-            이메일
-            <input type="email" name="email" value={formData.email} onChange={handleChange} className={styles.input} />
-        </label>
-        <label className={styles.label}>
             나이
             <input type="text" name="age" value={formData.id} onChange={handleChange} className={styles.input} />
         </label>
@@ -72,10 +85,10 @@ function SignupPage() {
             성별
             <input type="text" name="gender" value={formData.id} onChange={handleChange} className={styles.input} />
         </label>
-        <button type="submit" className={styles.button}>회원가입</button>
+        <button type="submit" className={styles.button}>정보수정</button>
         </form>
     </div>
   );
 }
 
-export default SignupPage;
+export default InformationPage;
